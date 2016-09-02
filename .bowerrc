@@ -1,0 +1,6 @@
+{
+  "directory": "src/vendors",
+  "scripts": {
+    "postinstall": "gulp vendors"
+  }
+}

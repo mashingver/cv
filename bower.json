@@ -1,0 +1,21 @@
+{
+  "name": "cv",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "mashingver"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "^4.2.0",
+    "jquery": "^3.1.0"
+  }
+}
