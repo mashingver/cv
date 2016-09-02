@@ -4,10 +4,10 @@ $mainFont: 'Droid Sans', sans-serif;
 $light: 300;
 $normal: 400;
 $bold: 700;
-$colorText: rgb(118, 101, 128);
-//rgb(63, 108, 131)
+$colorText: rgb(96, 116, 128);
+//rgb(96, 116, 128)
 $colorBorders: rgba($colorText, .3);
-$colorActive: orangered;
+$colorActive: #ff8872;
 
 @mixin clearfix {
 	&:before,
@@ -34,7 +34,7 @@ body {
 	margin: 0 auto;
 	width: 17.8cm;
 	padding: 15px;
-	//background-color: ghostwhite;
+	//background-color: #fff0d7;
 	font-family: $mainFont;
 	font-size: 14px;
 	line-height: 1.5;
@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: $normal;
 }
 h1 {
-	color: darken($colorText, 15);
+	color: darken($colorText, 9);
 }
 h2 {
 	color: darken($colorText, 7);
@@ -138,10 +138,9 @@ section {
 	li {
 		width: 50%;
 		float: left;
-		//&:last-of-type {
-		//	float: none;
-		//	width: 100%;
-		//}
+		&:last-child {
+			width: 100%;
+		}
 	}
 }
 
@@ -169,8 +168,4 @@ section {
 			background-color: $colorActive;
 		}
 	}
-}
-
-.w250 {
-	width: 250px;
 }
