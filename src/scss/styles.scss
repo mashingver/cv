@@ -107,11 +107,7 @@ section {
 }
 
 .skills-list {
-	@include clearfix;
-	> li {
-		width: 50%;
-		float: left;
-	}
+	column-count: 2;
 	span {
 		display: inline-block;
 		width: 100px;
