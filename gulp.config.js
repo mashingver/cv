@@ -13,7 +13,7 @@ module.exports = function() {
 		src: {
 			html: './src/html/index.html',
 			scss: './src/scss/styles.scss',
-			js: './src/js/main.js',
+			js: './src/js/app.js',
 			img: './src/images/**/*.*'
 		},
 		watch: {
