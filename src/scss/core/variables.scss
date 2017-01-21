@@ -1,11 +1,11 @@
-@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400';
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400';
 
-$mainFont: 'Droid Sans', sans-serif;
+$mainFont: 'Roboto', sans-serif;
 $light: 300;
 $normal: 400;
 $bold: 700;
-$colorText: rgba(226, 214, 160, 0.69);
+$colorText: rgba(3, 22, 34, 0.93);
 //rgb(96, 116, 128)
 $colorBorders: rgba($colorText, .3);
-$colorBackground: rgba(10, 4, 24, 0.9);
-$colorActive: #ffc93a;
+$colorBackground: rgba(248, 242, 227, 0.9);
+$colorActive: #09486f;

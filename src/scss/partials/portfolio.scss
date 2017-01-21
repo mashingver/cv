@@ -2,5 +2,11 @@
 	&__heading {}
 	&__list {
 		column-count: 3;
+		li:nth-of-type(5),
+		li:nth-of-type(6),
+		li:nth-of-type(7),
+		li:nth-of-type(8) {
+			padding-left: 50px;
+		}
 	}
 }
