@@ -1,0 +1,24 @@
+.work-experience {
+	&__heading {}
+	&__list {
+		li {
+			margin-bottom: 10px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+	&__item {
+		position: relative;
+		span {
+			font-size: .9em;
+			color: gray;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+		p {
+			width: 520px;
+		}
+	}
+}

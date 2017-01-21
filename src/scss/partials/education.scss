@@ -1,0 +1,14 @@
+.education {
+	&__heading {
+	}
+	&__content {
+		position: relative;
+		span {
+			font-size: .9em;
+			color: gray;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+}

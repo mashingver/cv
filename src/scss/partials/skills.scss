@@ -1,0 +1,10 @@
+.skills {
+	&__heading {}
+	&__list {
+		column-count: 2;
+		span {
+			display: inline-block;
+			width: 200px;
+		}
+	}
+}

@@ -1,0 +1,13 @@
+.personal-info-and-contacts {
+	&__list {
+		column-count: 2;
+		li {
+			&.mobile {
+				span:nth-of-type(3) {
+					margin-left: 42px;
+					display: inline-block;
+				}
+			}
+		}
+	}
+}
