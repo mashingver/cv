@@ -14,7 +14,7 @@ body {
 	font-family: $mainFont;
 	font-size: 12px;
 	line-height: 1.5;
-	font-weight: $light;
+	font-weight: $normal;
 	color: $colorText;
 }
 
@@ -86,7 +86,7 @@ section {
 
 .rating {
 	display: inline-block;
-	width: 72px;
+	width: 88px;
 
 	.dot {
 		width: .8em;
