@@ -7,4 +7,9 @@
 			width: 200px;
 		}
 	}
+	&__list-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 }

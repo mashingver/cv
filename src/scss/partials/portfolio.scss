@@ -2,6 +2,7 @@
 	&__heading {}
 	&__list {
 		column-count: 3;
+		li:nth-of-type(3),
 		li:nth-of-type(4),
 		li:nth-of-type(5),
 		li:nth-of-type(6) {

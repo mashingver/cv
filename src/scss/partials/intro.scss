@@ -1,23 +1,27 @@
 .intro {
 
 	&__heading {
-
+		margin-bottom: 10px;
 	}
 
 	&__sub-heading {
 		margin-bottom: 15px;
 	}
 
-	&__text {}
+	&__card {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__text {
+		padding-left: 20px;
+	}
 
 	&__image {
-		float: left;
 		display: block;
 		width: 115px;
 		height: 115px;
 		border-radius: 50%;
-		margin: -12px 20px 0 10px;
-		//-webkit-shape-outside:circle();
-		//shape-outside:circle();
 	}
 }
