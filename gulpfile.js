@@ -1,144 +1,94 @@
-var gulp = require('gulp'),
-	config = require('./gulp.config')(),
-	del = require('del'),
-	browserSync = require("browser-sync"),
-	reload = browserSync.reload,
-	extender = require('gulp-html-extend'),
-	mainBowerFiles = require("main-bower-files"),
-	$ = require('gulp-load-plugins')({lazy:true});
-
+const gulp = require("gulp");
+const del = require("del");
+const browserSync = require("browser-sync").create();
+const extender = require("gulp-html-extend");
+const $ = require("gulp-load-plugins")({lazy: true});
+const config = require('./gulp.config')();
 
 // Compile HTML
-gulp.task('html', function () {
-	log('Compiling HTML');
-	return gulp.src(config.src.html)
-		.pipe($.plumber())
-		.pipe(extender(config.extender))
-		.pipe($.if(config.env === 'production', $.htmlmin()))
-		.on('error', $.util.log)
-		.pipe(gulp.dest(config.build.html))
-		.pipe(reload({stream: true}));
-});
+function html() {
+  log("Compiling HTML");
+  return gulp
+    .src(config.src.html)
+    .pipe($.plumber())
+    .pipe(extender(config.extender))
+    .pipe($.htmlmin())
+    .on("error", $.util.log)
+    .pipe(gulp.dest(config.build.html))
+    .pipe(browserSync.stream());
+}
 
 // Compile SCSS
-gulp.task('scss', function() {
-	log('Compiling SCSS --> CSS');
-	return gulp.src(config.src.scss)
-		.pipe($.plumber())
-		.pipe($.if(config.env == 'development', $.sourcemaps.init()))
-		.pipe($.sass())
-		.pipe($.cssimport(config.cssimport))
-		.pipe($.autoprefixer(config.autoprefixer))
-		.pipe($.if(config.env == 'development', $.sourcemaps.write()))
-		.pipe($.if(config.env == 'production', $.cssnano()))
-		.pipe(gulp.dest(config.build.css))
-		.pipe(reload({stream: true}));
-});
+function scss() {
+  log("Compiling SCSS --> CSS");
+  return gulp
+    .src(config.src.scss)
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.sass())
+    .pipe($.cssimport(config.cssimport))
+    .pipe($.autoprefixer(config.autoprefixer))
+    .pipe($.cssnano())
+    .pipe($.rename({extname: ".min.css"}))
+    .pipe($.sourcemaps.write("./"))
+    .on("error", $.util.log)
+    .pipe(gulp.dest(config.build.css))
+    .pipe(browserSync.stream());
+}
 
-// Compile JS
-gulp.task('js', function () {
-	log('Compiling JS');
-	return gulp.src(config.src.js)
-		.pipe($.plumber())
-		.pipe($.rigger())
-		.pipe($.if(config.env === 'production', $.uglify()))
-		.on('error', $.util.log)
-		.pipe(gulp.dest(config.build.js))
-		.pipe(reload({stream: true}));
-});
-
-// Compile Images
-gulp.task('images', function () {
-	log('Compiling Images');
-	return gulp.src(config.src.img)
-		.pipe($.plumber())
-		.pipe($.if(config.env === 'production', $.imagemin(config.imagemin)))
-		.pipe(gulp.dest(config.build.img))
-		.pipe(reload({stream: true}));
-});
-
-// Compile vendors CSS
-gulp.task("vendors:css", function () {
-	log('Compiling vendors css files');
-	return gulp.src(mainBowerFiles({
-			filter: /.*\.css$/
-		}))
-		.pipe($.plumber())
-		.pipe($.concat('vendors.min.css'))
-		.pipe($.cssnano())
-		.pipe(gulp.dest(config.build.css));
-});
-
-// Compile vendors JS
-gulp.task("vendors:js", function () {
-	log('Compiling vendors javascript files');
-	return gulp.src(mainBowerFiles({
-			filter: /.*\.js$/
-		}))
-		.pipe($.plumber())
-		.pipe($.concat('vendors.min.js'))
-		.pipe($.uglify())
-		.pipe(gulp.dest(config.build.js));
-});
-
-// Compile vendors
-gulp.task('vendors', function() {
-	log('Compiling vendors files');
-	gulp.start('vendors:css');
-	gulp.start('vendors:js');
-});
+function images() {
+  log("Optimizing Images");
+  return gulp
+    .src(config.src.images)
+    .pipe($.plumber())
+    .pipe($.imagemin(config.imagemin))
+    .pipe(gulp.dest(config.build.images))
+    .pipe(browserSync.stream());
+}
 
 // Compile build
-gulp.task('build', function() {
-	log('Compiling build');
-	gulp.start('html');
-	gulp.start('scss');
-	gulp.start('js');
-	gulp.start('images');
-});
+function build(done) {
+  log("Compiling build");
+  gulp.series(clean, images, html, scss)(done);
+}
 
-// Server
-gulp.task('server', function () {
-	log('Starting a server');
-	browserSync(config.browserSyncConfig);
-});
+// BrowserSyncServer
+function browserSyncServer(done) {
+  log('Starting a server');
+  browserSync.init(config.browserSyncConfig);
+  done();
+}
 
 // Watch files changes
-gulp.task('watch', function () {
-	log('Watching html, scss, js and image files');
-	$.watch([config.watch.html], function (event, cb) {
-		gulp.start('html');
-	});
-	$.watch([config.watch.scss], function (event, cb) {
-		gulp.start('scss');
-	});
-	$.watch([config.watch.js], function (event, cb) {
-		gulp.start('js');
-	});
-	$.watch([config.watch.img], function (event, cb) {
-		gulp.start('images');
-	});
-});
+function watchFiles() {
+  log("Watching html, scss and image files");
+  gulp.watch(config.watch.html, html);
+  gulp.watch(config.watch.scss, scss);
+  gulp.watch(config.watch.images, images);
+}
 
 // Clean build folder
-gulp.task('clean', function() {
-	var files = config.clean;
-	log('Cleaning: ' + $.util.colors.blue(files));
-	del(files);
-});
+function clean(done) {
+  const files = config.clean;
+  log("Cleaning: " + $.util.colors.blue(files));
+  del(files);
+  done();
+}
 
-// Gulp default
-gulp.task('default', ['build', 'server', 'watch']);
+exports.default = gulp.series(clean, build, gulp.parallel(watchFiles, browserSyncServer));
+exports.html = html;
+exports.scss = scss;
+exports.images = images;
 
-//Helpers
+// Helpers
 function log(msg) {
-	if (typeof(msg) === 'object') {
-		for (var item in msg) {
-			if (msg.hasOwnProperty(item)) {
-				$.util.log($.util.colors.blue(msg[item]));
-			}
-		}
-	} else {
-		$.util.log($.util.colors.blue(msg));
-	}
+  if (typeof msg === "object") {
+    for (let item in msg) {
+      if (msg.hasOwnProperty(item)) {
+        $.util.log($.util.colors.blue(msg[item]));
+      }
+    }
+  } else {
+    $.util.log($.util.colors.blue(msg));
+  }
 }

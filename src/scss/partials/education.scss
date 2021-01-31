@@ -1,14 +1,14 @@
 .education {
-	&__heading {
-	}
-	&__content {
-		position: relative;
-		span {
-			font-size: .9em;
-			color: rgba(23, 18, 29, 0.96);
-			position: absolute;
-			right: 0;
-			top: 0;
-		}
-	}
+  &__heading {
+  }
+  &__content {
+    position: relative;
+    span {
+      font-size: 0.9em;
+      color: rgba(23, 18, 29, 0.96);
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
 }
