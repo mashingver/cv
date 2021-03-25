@@ -1,24 +1,25 @@
 .work-experience {
-	&__heading {}
-	&__list {
-		li {
-			margin-bottom: 10px;
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-	}
-	&__item {
-		position: relative;
-		span {
-			font-size: .9em;
-			color: rgba(23, 18, 29, 0.96);
-			position: absolute;
-			right: 0;
-			top: 0;
-		}
-		p {
-			width: 520px;
-		}
-	}
+  &__heading {
+  }
+  &__list {
+    li {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__item {
+    position: relative;
+    span {
+      font-size: 0.9em;
+      color: rgba(23, 18, 29, 0.96);
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    p {
+      width: 520px;
+    }
+  }
 }

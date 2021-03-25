@@ -1,27 +1,26 @@
 .intro {
+  &__heading {
+    margin-bottom: 10px;
+  }
 
-	&__heading {
-		margin-bottom: 10px;
-	}
+  &__sub-heading {
+    margin-bottom: 15px;
+  }
 
-	&__sub-heading {
-		margin-bottom: 15px;
-	}
+  &__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-	&__card {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+  &__text {
+    padding-left: 20px;
+  }
 
-	&__text {
-		padding-left: 20px;
-	}
-
-	&__image {
-		display: block;
-		width: 115px;
-		height: 115px;
-		border-radius: 50%;
-	}
+  &__image {
+    display: block;
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+  }
 }

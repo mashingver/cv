@@ -4,8 +4,7 @@ $mainFont: "Roboto", sans-serif;
 $light: 300;
 $normal: 400;
 $bold: 700;
-$colorText: rgba(26, 8, 34, 0.85);
-//rgb(96, 116, 128)
-$colorBorders: rgba($colorText, 0.3);
-$colorBackground: rgba(248, 245, 241, 0.9);
-$colorActive: rgba(69, 50, 117, 0.89);
+$colorText: rgba(26, 8, 34, 0.9);
+$colorBorders: rgba($colorText, 0.1);
+$colorBackground: rgb(234, 229, 201);
+$colorActive: rgba(3, 17, 57, 0.9);

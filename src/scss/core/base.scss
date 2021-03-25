@@ -1,103 +1,108 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @page {
-	margin: 0;
+  margin: 0;
 }
 
 body {
-	margin: 0 auto;
-	width: 17.8cm;
-	padding: 15px;
-	background-color: $colorBackground;
-	font-family: $mainFont;
-	font-size: 12px;
-	line-height: 1.5;
-	font-weight: $normal;
-	color: $colorText;
+  margin: 0 auto;
+  width: 17.8cm;
+  padding: 15px;
+  background-color: $colorBackground;
+  font-family: $mainFont;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: $normal;
+  color: $colorText;
 }
 
 p {
-	margin: 0;
+  margin: 0;
 }
 
 ul {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 li {
-	list-style: none;
+  list-style: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-	font-weight: $normal;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: $normal;
 }
 
 h1 {
-	color: darken($colorText, 9);
+  color: darken($colorText, 9);
 }
 
 h2 {
-	color: darken($colorText, 7);
+  color: darken($colorText, 7);
 }
 
 h3 {
-	margin-bottom: 6px;
-	color: darken($colorText, 5);
+  margin-bottom: 6px;
+  color: darken($colorText, 5);
 }
 
 h4 {
-	color: darken($colorText, 3);
+  color: darken($colorText, 3);
 }
 
 h5 {
-	font-size: .9em;
-	color: darken($colorText, 2);
+  font-size: 0.9em;
+  color: darken($colorText, 2);
 }
 
 a {
-	text-decoration: none;
-	color: $colorActive;
-	font-weight: $normal;
+  text-decoration: none;
+  color: $colorActive;
+  font-weight: $normal;
 }
 
 section {
-	@include clearfix;
-	padding: 8px 0;
-	border-top: 2px solid $colorBorders;
+  @include clearfix;
+  padding: 8px 0;
+  border-top: 2px solid $colorBorders;
 
-	&:first-of-type {
-		border-top: none;
-	}
+  &:first-of-type {
+    border-top: none;
+  }
 
-	.col-left {
-		float: left;
-		width: 30%;
-	}
+  .col-left {
+    float: left;
+    width: 30%;
+  }
 
-	.col-right {
-		float: right;
-		width: 70%;
-	}
+  .col-right {
+    float: right;
+    width: 70%;
+  }
 }
 
 .rating {
-	display: inline-block;
-	width: 88px;
+  display: inline-block;
+  width: 88px;
 
-	.dot {
-		width: 1em;
-		height: 1em;
-		display: inline-block;
-		border-radius: 50%;
-		background-color: transparent;
-		border: 1px solid $colorActive;
+  .dot {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid $colorActive;
 
-		&.active {
-			background-color: $colorActive;
-		}
-	}
+    &.active {
+      background-color: $colorActive;
+    }
+  }
 }
