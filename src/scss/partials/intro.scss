@@ -9,17 +9,20 @@
 
   &__card {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 
   &__text {
+    width: auto;
+    flex: 1 1 auto;
     padding-left: 20px;
   }
 
   &__image {
     display: block;
     width: 115px;
+    flex: 0 0 115px;
     height: 115px;
     border-radius: 50%;
   }
